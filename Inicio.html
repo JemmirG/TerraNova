@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Nova - Estadero Elegante</title>
+    <link rel="stylesheet" href="Inicio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ESTILOS ADICIONALES PARA LAS NUEVAS SECCIONES */
+        
+        /* WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Estadísticas */
+        .stats-section {
+            padding: 80px 50px;
+            background: #111;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 30px 20px;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: #8B1E25;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Testimonios */
+        .testimonials-section {
+            padding: 100px 50px;
+            background: #0A0A0A;
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #111;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(139, 30, 37, 0.2);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .testimonial-author {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+        }
+
+        .author-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .author-rating {
+            color: #FFD700;
+        }
+
+        /* Reservas */
+        .reservation-section {
+            padding: 100px 50px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .reservation-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 50px;
+            border-radius: 15px;
+            border: 1px solid #8B1E25;
+        }
+
+        .reservation-description {
+            text-align: center;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        .reservation-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 5px;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8B1E25;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .reservation-submit {
+            padding: 15px 30px;
+            background: #8B1E25;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .reservation-submit:hover {
+            background: #7a1a20;
+            transform: translateY(-2px);
+        }
+
+        /* Footer Mejorado */
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-section h3 {
+            color: #8B1E25;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .footer-section i {
+            margin-right: 10px;
+            color: #8B1E25;
+        }
+
+        .social-footer {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-footer a {
+            color: #ccc;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-footer a:hover {
+            color: #8B1E25;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(139, 30, 37, 0.3);
+            padding-top: 20px;
+            text-align: center;
+            color: #ccc;
+        }
+
+        /* Responsive adicional */
+        @media (max-width: 768px) {
+            .reservation-container {
+                padding: 30px 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="header">
+        <div class="logo">Terra Nova</div>
+        <nav class="nav">
+            <a href="#inicio">Inicio</a>
+            <a href="#carta">Carta</a>
+            <a href="#galeria">Galería</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#mapa">Ubicación</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        <a href="#reservas" class="reserve-btn">Reservar</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>TERRA NOVA</h1>
+            <p>EXPERIENCIA CULINARIA SUBLIME</p>
+            <a href="#reservas" class="cta-button">RESERVAR MESA</a>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: Estadísticas -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" data-count="500">0</div>
+                <div class="stat-label">Clientes Satisfechos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="50">0</div>
+                <div class="stat-label">Platos Exclusivos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="3">0</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="100">0</div>
+                <div class="stat-label">Eventos Realizados</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section (EXISTENTE) -->
+    <section class="menu-section" id="carta">
+        <h2 class="section-title">Nuestra Carta</h2>
+        
+        <div class="menu-categories">
+            <button class="category-btn active" data-category="all">Todo</button>
+            <button class="category-btn" data-category="carnes">Carnes Prime</button>
+            <button class="category-btn" data-category="mariscos">Mariscos</button>
+            <button class="category-btn" data-category="entradas">Entradas</button>
+            <button class="category-btn" data-category="postres">Postres</button>
+        </div>
+
+        <div class="dishes-grid">
+            <!-- Carnes -->
+            <div class="dish-card" data-category="carnes">
+                <img src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tomahawk Steak" class="dish-image">
+                <div class="dish-info">
+                    <h3 class="dish-name">Tomahawk Steak</h3>
+                    <p class="dish-description">Corte premium de 1.2kg, madurado 28 días. Acompañado de vegetales asados y salsa bearnais.</p>
+                    <div class="dish-price">$185.000</div>
+                </div>
+            </div>
+
+            <div class="dish-card" data-category="carnes">
+                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Ribeye" class="dish-image">
+                <div class="dish-info">
+                    <h3 class="dish-name">Ribeye Prime</h3>
+                    <p class="dish-description">Corte jugoso con vetas de grasa intramuscular, 400g. Servido con puré de papas trufado.</p>
+                    <div class="dish-price">$120.000</div>
+                </div>
+            </div>
+
+            <!-- Mariscos -->
+            <div class="dish-card" data-category="mariscos">
+                <img src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Langosta" class="dish-image">
+                <div class="dish-info">
+                    <h3 class="dish-name">Langosta Thermidor</h3>
+                    <p class="dish-description">Langosta completa gratinada con salsa thermidor, acompañada de espárragos y arroz salvaje.</p>
+                    <div class="dish-price">$95.000</div>
+                </div>
+            </div>
+
+            <div class="dish-card" data-category="mariscos">
+                <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Atún" class="dish-image">
+                <div class="dish-info">
+                    <h3 class="dish-name">Atún Sellado</h3>
+                    <p class="dish-description">Lomo de atún sellado con sésamo, wasabi y jengibre. Acompañado de ensalada de algas.</p>
+                    <div class="dish-price">$85.000</div>
+                </div>
+            </div>
+
+            <!-- Entradas -->
+            <div class="dish-card" data-category="entradas">
+                <img src="https://images.unsplash.com/photo-1606755962773-d324e2dabd5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tartar" class="dish-image">
+                <div class="dish-info">
+                    <h3 class="dish-name">Tartar de Res</h3>
+                    <p class="dish-description">Carne de res premium picada finamente con alcaparras, chalota y salsa Worcestershire.</p>
+                    <div class="dish-price">$45.000</div>
+                </div>
+            </div>
+
+            <!-- Postres -->
+            <div class="dish-card" data-category="postres">
+                <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Chocolate" class="dish-image">
+                <div class="dish-info">
+                    <h3 class="dish-name">Soufflé de Chocolate</h3>
+                    <p class="dish-description">Soufflé de chocolate negro 70% con centro fundido, acompañado de helado de vainilla.</p>
+                    <div class="dish-price">$32.000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: Testimonios -->
+    <section class="testimonials-section" id="testimonios">
+        <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"La mejor carne que he probado en Bogotá. El servicio impecable y el ambiente espectacular."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-name">María González</div>
+                    <div class="author-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"Perfecto para celebraciones especiales. La atención y la comida superaron todas las expectativas."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-name">Carlos Rodríguez</div>
+                    <div class="author-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"Los mariscos frescos y los cortes prime son increíbles. Volveremos pronto sin duda."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-name">Ana Martínez</div>
+                    <div class="author-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería (EXISTENTE) -->
+    <section class="gallery-section" id="galeria">
+        <h2 class="section-title">Galería</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Interior">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Carnes">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Platos">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Barra">
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: Reservas -->
+    <section class="reservation-section" id="reservas">
+        <div class="reservation-container">
+            <div class="reservation-content">
+                <h2 class="section-title">Reserva Tu Mesa</h2>
+                <p class="reservation-description">Asegura tu experiencia gastronómica inolvidable</p>
+                
+                <form class="reservation-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Teléfono" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Hora</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Personas</option>
+                                <option value="1">1 persona</option>
+                                <option value="2">2 personas</option>
+                                <option value="3">3 personas</option>
+                                <option value="4">4 personas</option>
+                                <option value="5">5+ personas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Notas especiales (aniversario, alergias, etc.)" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="reservation-submit">Confirmar Reserva</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info (EXISTENTE) -->
+    <section class="info-section" id="nosotros">
+        <div class="categories-section">
+            <ul class="categories">
+                <li>Carne Prime</li>
+                <li>Mariscos Selectos</li>
+                <li>Barra Premium</li>
+                <li>Vinos Exclusivos</li>
+                <li>Eventos Privados</li>
+            </ul>
+        </div>
+
+        <div class="info-content">
+            <h2>Terra Nova</h2>
+            <p class="description">
+                Estadero elegante especializado en cortes prime y mariscos selectos desde 2020. 
+                Terra Nova es un rendez-vous obligado para los amantes de la buena carne y la cocina sofisticada. 
+                Un lugar de encuentro refinado donde la tradición se fusiona con la vanguardia culinaria.
+            </p>
+            <p class="description">
+                Nuestro equipo de chefs trabaja con los mejores productos locales e internacionales, 
+                creando experiencias gastronómicas memorables en un ambiente de lujo y sofisticación.
+            </p>
+
+            <div class="hours">
+                <strong>Horarios:</strong><br>
+                Martes a Sábado: 12:00 - 16:00 / 19:00 - 00:00<br>
+                Domingo: 12:00 - 18:00<br>
+                Lunes: Cerrado
+            </div>
+
+            <div class="contact-info">
+                <div class="phone">Reservas: +57 1 234 5678</div>
+                <div class="phone">Móvil: +57 300 123 4567</div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps (EXISTENTE) -->
+    <section class="map-section" id="mapa">
+        <h2 class="section-title">Ubicación</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.694661590975!2d-74.08174938573679!3d4.609710343622782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a3e54f9547%3A0xe1ab0bcb7a4182a3!2sBogot%C3%A1%2C%20Colombia!5e0!3m2!1ses!2sco!4v1706200000000"
+                width="100%" 
+                height="450" 
+                style="border:0; border-radius: 20px;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Footer MEJORADO -->
+    <footer class="footer" id="contacto">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">Terra Nova</div>
+                <p>Estadero Elegante · Since 2020</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+                <p><i class="fas fa-phone"></i> +57 1 234 5678</p>
+                <p><i class="fas fa-envelope"></i> info@terranova.com</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Horarios</h3>
+                <p>Martes - Sábado: 12PM - 12AM</p>
+                <p>Domingo: 12PM - 6PM</p>
+                <p>Lunes: Cerrado</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-footer">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Terra Nova. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts (ACTUALIZADO) -->
+    <script>
+        // Script existente
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const dishCards = document.querySelectorAll('.dish-card');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+
+                dishCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animación de platos
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = Math.random() * 0.5 + 's';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        dishCards.forEach(card => observer.observe(card));
+
+        // NUEVOS SCRIPTS
+
+        // Contador animado para estadísticas
+        function animateCounter() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounter, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Observador para animar contadores cuando son visibles
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Formulario de reservas
+        const reservationForm = document.querySelector('.reservation-form');
+        if (reservationForm) {
+            reservationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('¡Reserva enviada! Te contactaremos pronto para confirmar.');
+                this.reset();
+            });
+        }
+
+        // WhatsApp flotante
+        const whatsappFloat = document.querySelector('.whatsapp-float');
+        if (whatsappFloat) {
+            whatsappFloat.addEventListener('click', function() {
+                // Aquí puedes agregar tracking de Google Analytics si lo tienes
+                console.log('WhatsApp clickeado');
+            });
+        }
+    </script>
+
+</body>
+</html>
